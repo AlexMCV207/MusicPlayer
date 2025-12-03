@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MusicPlayer.AddPlaylistPage"
+             Title="AddPlaylistPage">
+    <VerticalStackLayout Padding="20">
+        <Entry x:Name="NameEntry" Placeholder="Playlist name"/>
+        <Entry x:Name="AuthorEntry" Placeholder="Author"/>
+        <Entry x:Name="AmountEntry" Placeholder="Songs amount" Keyboard="Numeric"/>
+        <Entry x:Name="LengthEntry" Placeholder="Length (e.g. 52:11)"/>
+        <Entry x:Name="ImageEntry" Placeholder="Image path"/>
+
+        <Button Text="Add" Clicked="AddClicked"/>
+    </VerticalStackLayout>
+</ContentPage>
