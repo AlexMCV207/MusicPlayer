@@ -2,14 +2,15 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MusicPlayer.AddSongPage"
-             Title="AddSongPage">
+             Title="AddSongPage"
+             Background="CornflowerBlue">
     <VerticalStackLayout Padding="20" Spacing="15">
+    
+        <Entry x:Name="SongNameEntry" Placeholder="Nazwa" PlaceholderColor="White" Background="RoyalBlue"/>
+        <Entry x:Name="PerformerEntry" Placeholder="Wykonawca" PlaceholderColor="White" Background="RoyalBlue"/>
+        <Entry x:Name="ImageEntry" Placeholder="Scieżka do obrazu" PlaceholderColor="White" Background="RoyalBlue"/>
 
-        <Entry x:Name="SongNameEntry" Placeholder="Song name"/>
-        <Entry x:Name="PerformerEntry" Placeholder="Performer"/>
-        <Entry x:Name="ImageEntry" Placeholder="Image path"/>
-
-        <Button Text="Add song"
+        <Button Text="Dodaj"
                 BackgroundColor="RoyalBlue"
                 TextColor="White"
                 Clicked="AddSongClicked"/>

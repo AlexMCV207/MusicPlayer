@@ -2,14 +2,15 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MusicPlayer.AddPlaylistPage"
-             Title="AddPlaylistPage">
+             Title="AddPlaylistPage"
+             Background="CornflowerBlue">
     <VerticalStackLayout Padding="20">
-        <Entry x:Name="NameEntry" Placeholder="Playlist name"/>
-        <Entry x:Name="AuthorEntry" Placeholder="Author"/>
-        <Entry x:Name="AmountEntry" Placeholder="Songs amount" Keyboard="Numeric"/>
-        <Entry x:Name="LengthEntry" Placeholder="Length (e.g. 52:11)"/>
-        <Entry x:Name="ImageEntry" Placeholder="Image path"/>
+        <Entry x:Name="NameEntry" Placeholder="Nazwa playlisty" PlaceholderColor="White" Background="RoyalBlue"/>
+        <Entry x:Name="AuthorEntry" Placeholder="Autor" PlaceholderColor="White" Background="RoyalBlue"/>
+        <Entry x:Name="AmountEntry" Placeholder="Ilość utworów" Keyboard="Numeric" PlaceholderColor="White" Background="RoyalBlue"/>
+        <Entry x:Name="LengthEntry" Placeholder="Długość (w sekundach)" PlaceholderColor="White" Background="RoyalBlue"/>
+        <Entry x:Name="ImageEntry" Placeholder="Ścieżka do obrazu" PlaceholderColor="White" Background="RoyalBlue"/>
 
-        <Button Text="Add" Clicked="AddClicked"/>
+        <Button Text="Dodaj" Clicked="AddClicked" Background="RoyalBlue" TextColor="White"/>
     </VerticalStackLayout>
 </ContentPage>

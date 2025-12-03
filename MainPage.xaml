@@ -50,6 +50,7 @@
                     <Label x:Name="SongCurrentTime" Text="0:00 / 0:00" FontAttributes="Bold" FontSize="18" Margin="5"/>
                     <ProgressBar x:Name="SongCurrentProgress" WidthRequest="260"/>
                 </VerticalStackLayout>
+                <Button Text="▶" Background="Transparent" TextColor="White" FontSize="50"/>
                 <Image x:Name="SongCurrentImage" WidthRequest="140" HeightRequest="100"/>
             </HorizontalStackLayout>
         </Frame>
