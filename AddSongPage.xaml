@@ -8,8 +8,11 @@
     
         <Entry x:Name="SongNameEntry" Placeholder="Nazwa" PlaceholderColor="White" Background="RoyalBlue"/>
         <Entry x:Name="PerformerEntry" Placeholder="Wykonawca" PlaceholderColor="White" Background="RoyalBlue"/>
-        <Entry x:Name="ImageEntry" Placeholder="Scieżka do obrazu" PlaceholderColor="White" Background="RoyalBlue"/>
-
+        <Button Text="Wybierz obraz" BackgroundColor="RoyalBlue" TextColor="White" Clicked="PickImageClicked"/>
+        <Image x:Name="SelectedImagePreview" HeightRequest="120" WidthRequest="120" Aspect="AspectFill" IsVisible="False"/>
+        <Label x:Name="SelectedImageLabel" Text="Nie wybrano obrazu" TextColor="White"/>
+        <Button Text="Wybierz plik audio" BackgroundColor="RoyalBlue" TextColor="White" Clicked="PickFileClicked"/>
+        <Label x:Name="SelectedFileLabel" Text="Nie wybrano pliku" TextColor="White"/>
         <Button Text="Dodaj"
                 BackgroundColor="RoyalBlue"
                 TextColor="White"

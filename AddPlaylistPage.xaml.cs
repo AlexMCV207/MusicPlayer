@@ -1,26 +1,27 @@
 using System.Collections.ObjectModel;
 
-namespace MusicPlayer;
-
-public partial class AddPlaylistPage : ContentPage
+namespace MusicPlayer
 {
-    private ObservableCollection<Playlist> _playlists;
-    public AddPlaylistPage(ObservableCollection<Playlist> playlists)
+    public partial class AddPlaylistPage : ContentPage
     {
-		InitializeComponent();
-        _playlists = playlists;
-    }
-    private void AddClicked(object sender, EventArgs e)
-    {
-        _playlists.Add(new Playlist
+        private ObservableCollection<Playlist> _playlists;
+        public AddPlaylistPage(ObservableCollection<Playlist> playlists)
         {
-            Name = NameEntry.Text,
-            Author = AuthorEntry.Text,
-            SongAmount = int.Parse(AmountEntry.Text),
-            Length = "d³ugoœæ: " + LengthEntry.Text,
-            Image = ImageEntry.Text
-        });
+            InitializeComponent();
+            _playlists = playlists;
+        }
+        private void AddClicked(object sender, EventArgs e)
+        {
+            _playlists.Add(new Playlist
+            {
+                Name = NameEntry.Text,
+                Author = AuthorEntry.Text,
+                SongAmount = int.Parse(AmountEntry.Text),
+                Length = "d³ugoœæ: " + LengthEntry.Text,
+                Image = ImageEntry.Text
+            });
 
-        Navigation.PopAsync();
+            Navigation.PopAsync();
+        }
     }
 }

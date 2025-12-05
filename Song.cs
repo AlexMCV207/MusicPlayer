@@ -11,5 +11,6 @@ namespace MusicPlayer
         public string Image { get; set; }
         public string sname { get; set; }
         public string performer { get; set; }
+        public string filePath { get; set; }
     }
 }

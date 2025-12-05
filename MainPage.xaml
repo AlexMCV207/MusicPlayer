@@ -1,9 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MusicPlayer.MainPage"
-             BackgroundColor="CornflowerBlue">
-    <Grid>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit" x:Class="MusicPlayer.MainPage" BackgroundColor="CornflowerBlue">
+    <Grid RowDefinitions="*,150">
         <ScrollView>
             <VerticalStackLayout Padding="15,15">
                 <Label Text="Recent playlists" TextColor="White" FontSize="18" FontAttributes="Bold"/>
@@ -23,36 +20,38 @@
                     </CollectionView.ItemTemplate>
                 </CollectionView>
                 <Label Text="Recent songs" TextColor="White" FontSize="18" FontAttributes="Bold"/>
-                <CollectionView ItemsSource="{Binding Songs}">
+                <CollectionView ItemsSource="{Binding Songs}" SelectionMode="Single" SelectionChanged="SongSelected">
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
-                            <HorizontalStackLayout>
-                                <Frame Background="RoyalBlue" BorderColor="RoyalBlue">
-                                    <Grid RowDefinitions="*,*" ColumnDefinitions="*,*">
-                                        <Image Source="{Binding Image}" x:Name="SongImage" Grid.Column="0" Grid.Row="0" Grid.RowSpan="2"/>
-                                        <Label Text="{Binding sname}" x:Name="SongName" Grid.Column="1" Grid.Row="0"/>
-                                        <Label Text="{Binding performer}" x:Name="SongPerformer" Grid.Column="1" Grid.Row="1"/>
-                                    </Grid>
-                                </Frame>
-                            </HorizontalStackLayout>
+                            <Frame Background="RoyalBlue" BorderColor="RoyalBlue" Margin="10">
+                                <Grid RowDefinitions="*,*" ColumnDefinitions="*,*,*">
+                                    <Image Source="{Binding Image}" x:Name="SongImage" Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" MaximumHeightRequest="140" Aspect="Fill"/>
+                                    <Label Text="{Binding sname}" x:Name="SongName" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2" FontAttributes="Bold" FontSize="18"/>
+                                    <Label Text="{Binding performer}" x:Name="SongPerformer" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2"/>
+                                </Grid>
+                            </Frame>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
             </VerticalStackLayout>
         </ScrollView>
-        <Button Text="Dodaj playlistę" TextColor="White" FontSize="20" Padding="0,-5,0,0" FontAttributes="Bold" WidthRequest="180" HeightRequest="50" HorizontalOptions="Start" VerticalOptions="End" Margin="15,0,0,128" BackgroundColor="RoyalBlue" Clicked="AddPlaylistClicked"/>
-        <Button Text="Dodaj utwór" TextColor="White" FontSize="20" Padding="0,-5,0,0" FontAttributes="Bold" WidthRequest="180" HeightRequest="50" HorizontalOptions="Start" VerticalOptions="End" Margin="215,0,0,128" BackgroundColor="RoyalBlue" Clicked="AddSongClicked"/>
-        <Frame BorderColor="RoyalBlue" HeightRequest="130" BackgroundColor="RoyalBlue" CornerRadius="15" VerticalOptions="End" Margin="0,0,0,-10">
-            <HorizontalStackLayout>
-                <VerticalStackLayout>
-                    <Label x:Name="SongCurrentName" Text="SongName" FontAttributes="Bold" FontSize="18"/>
-                    <Label x:Name="SongCurrentPerformer" Text="SongPerformer" FontSize="14"/>
-                    <Label x:Name="SongCurrentTime" Text="0:00 / 0:00" FontAttributes="Bold" FontSize="18" Margin="5"/>
-                    <ProgressBar x:Name="SongCurrentProgress" WidthRequest="260"/>
-                </VerticalStackLayout>
-                <Button Text="▶" Background="Transparent" TextColor="White" FontSize="50"/>
-                <Image x:Name="SongCurrentImage" WidthRequest="140" HeightRequest="100"/>
-            </HorizontalStackLayout>
+        <Button Grid.Row="1" Text="Dodaj playlistę" TextColor="White" FontSize="20" Padding="0,-5,0,0" FontAttributes="Bold" WidthRequest="160" HeightRequest="50" HorizontalOptions="Start" VerticalOptions="End" Margin="15,0,0,148" BackgroundColor="RoyalBlue" Clicked="AddPlaylistClicked"/>
+        <Button Grid.Row="1" Text="Dodaj utwór" TextColor="White" FontSize="20" Padding="0,-5,0,0" FontAttributes="Bold" WidthRequest="160" HeightRequest="50" HorizontalOptions="End" VerticalOptions="End" Margin="0,0,15,148" BackgroundColor="RoyalBlue" Clicked="AddSongClicked"/>
+        <Frame Grid.Row="2" BorderColor="RoyalBlue" HeightRequest="150" BackgroundColor="RoyalBlue" CornerRadius="15" VerticalOptions="End" Margin="0,0,0,-10">
+            <Grid RowDefinitions="*,*,*,*" ColumnDefinitions="*,*,*,*,*,*,*,*,*" Margin="2">
+                <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Grid.RowSpan="2" x:Name="SongCurrentName" Text="Wybierz utwór!" FontAttributes="Bold" FontSize="16"/>
+                <Label Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" x:Name="SongCurrentPerformer" Text="SongPerformer" FontSize="13"/>
+                <Image Grid.Row="0" Grid.Column="6" Grid.ColumnSpan="3" x:Name="SongCurrentImage" Source="{Binding Image}" MaximumWidthRequest="140" HeightRequest="100" Margin="0,20,0,0" Aspect="Fill"/>
+                <Button Grid.Row="0" Grid.Column="3" Grid.RowSpan="2" Text="|◀◀ " BackgroundColor="Transparent" WidthRequest="10" Padding="0" TextColor="White" FontSize="10" Clicked="PrevSongClicked"/>
+                <Button Grid.Row="0" Grid.Column="4" Grid.RowSpan="2" x:Name="PlayPauseButton" Text="▶" WidthRequest="10" Padding="0" Background="Transparent" TextColor="White" FontSize="20" Clicked="PlayPauseClicked"/>
+                <Button Grid.Row="0" Grid.Column="5" Grid.RowSpan="2" Text="▶▶|" BackgroundColor="Transparent" TextColor="White" WidthRequest="10" Padding="0" FontSize="10" Clicked="NextSongClicked"/>
+                <toolkit:MediaElement x:Name="Player" ShouldAutoPlay="False" ShouldShowPlaybackControls="False" IsVisible="False" MediaEnded="Player_MediaEnded"/>
+                <Label Grid.Row="3" Grid.Column="0"  x:Name="CurrentTimeLabel" Text="0:00" TextColor="White"/>
+                <Slider Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="7" x:Name="SongSlider" Minimum="0" Maximum="1" Margin="5,0,5,0" ValueChanged="SongSlider_ValueChanged" DragStarted="SongSlider_DragStarted" DragCompleted="SongSlider_DragCompleted"/>
+                <Label Grid.Row="3" Grid.Column="9" x:Name="TotalTimeLabel" Text="0:00" TextColor="White" Margin="5,0,0,0"/>
+                <Button Grid.Row="1" Grid.Column="2" Grid.RowSpan="2" Clicked="MuteButtonClicked" x:Name="MuteButton" Text="🔈" TextColor="White" VerticalOptions="End" Background="Transparent" FontSize="15" Margin="10,20,0,0"/>
+                <Slider  Grid.Row="2" Grid.Column="3"  Grid.ColumnSpan="3" x:Name="VolumeSlider" Minimum="0" Maximum="1" Value="0.5" ValueChanged="VolumeSlider_ValueChanged" Margin="5,0"/>
+            </Grid>
         </Frame>
     </Grid>
 </ContentPage>
